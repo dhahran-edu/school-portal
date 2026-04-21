@@ -545,21 +545,38 @@ async function api(action, params = {}) {
   if (!CONFIG.API_URL || CONFIG.API_URL.indexOf('PUT_YOUR') === 0) {
     throw new Error('API_URL غير مضبوط');
   }
-  // Apps Script يتطلب GET أو POST بـ text/plain لتفادي CORS preflight
   const query = new URLSearchParams({ action, ...params });
   const url = CONFIG.API_URL + '?' + query.toString();
   let res;
   try {
-    res = await fetch(url, { method: 'GET', redirect: 'follow' });
+    // نستخدم text/plain لتجنّب CORS preflight مع Apps Script
+    res = await fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      redirect: 'follow',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action, ...params })
+    });
   } catch (netErr) {
-    throw new Error('تعذّر الاتصال بالخادم. تحقق من الإنترنت أو من رابط الـ API.');
+    // محاولة بديلة باستخدام GET
+    try {
+      res = await fetch(url, { method: 'GET', mode: 'cors', redirect: 'follow' });
+    } catch (e2) {
+      throw new Error('تعذّر الاتصال بالخادم. تحقق من الإنترنت أو من رابط الـ API.');
+    }
   }
   if (!res.ok) throw new Error('خطأ في الاتصال بالخادم (' + res.status + ')');
+  let text;
+  try {
+    text = await res.text();
+  } catch (e) {
+    throw new Error('تعذّر قراءة رد الخادم');
+  }
   let data;
   try {
-    data = await res.json();
+    data = JSON.parse(text);
   } catch (parseErr) {
-    throw new Error('رد الخادم غير صالح. قد يكون النشر منتهياً.');
+    throw new Error('رد الخادم غير صالح. قد يكون النشر منتهياً أو يحتاج إعادة نشر.');
   }
   if (!data.ok) throw new Error(data.error || 'حدث خطأ');
   return data.data;
