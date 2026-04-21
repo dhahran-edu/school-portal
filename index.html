@@ -431,6 +431,399 @@ body {
   color: var(--ink-muted);
 }
 
+/* ===== شاشة مشتركة: رأس الشاشة مع زر رجوع ===== */
+.screen-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.screen-header .back-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  cursor: pointer;
+  color: var(--ink-soft);
+  flex-shrink: 0;
+}
+.screen-header .back-btn:hover { background: var(--border-soft); color: var(--ink); }
+.screen-header h2 { font-size: 19px; font-weight: 700; margin: 0; }
+
+/* ===== شاشة الاستيراد ===== */
+.import-intro {
+  background: var(--moe-purple-light);
+  color: var(--moe-purple-dark);
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  border: 1px solid #E0D1F7;
+}
+.import-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  margin-bottom: 14px;
+}
+.import-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.import-section .step-num {
+  background: var(--moe-purple);
+  color: white;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+.import-section p {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+.import-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.import-actions .btn {
+  width: auto;
+  padding: 10px 16px;
+  font-size: 13.5px;
+  flex: 1;
+  min-width: 140px;
+}
+.btn-outline {
+  background: transparent;
+  color: var(--moe-purple);
+  border: 1.5px solid var(--moe-purple);
+}
+.btn-outline:hover:not(:disabled) {
+  background: var(--moe-purple-light);
+}
+.import-result {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  display: none;
+}
+.import-result.success {
+  background: var(--moe-teal-light);
+  color: var(--moe-teal-dark);
+  border: 1px solid #A8E5C3;
+  display: block;
+}
+.import-result.error {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid #FECACA;
+  display: block;
+}
+.import-result ul { padding-right: 18px; margin-top: 6px; }
+.import-result li { margin-bottom: 3px; }
+
+input[type="file"] { display: none; }
+
+/* ===== شاشة الطلاب ===== */
+.search-bar {
+  position: relative;
+  margin-bottom: 12px;
+}
+.search-bar input {
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 14px;
+  background: var(--surface);
+}
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--moe-purple);
+}
+.search-bar .search-icon {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-muted);
+  pointer-events: none;
+}
+
+.filter-chips {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  margin-bottom: 14px;
+  padding-bottom: 4px;
+}
+.filter-chips::-webkit-scrollbar { display: none; }
+.filter-chip {
+  padding: 6px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all .15s;
+}
+.filter-chip.active {
+  background: var(--moe-purple);
+  color: white;
+  border-color: var(--moe-purple);
+}
+
+.students-meta {
+  font-size: 12.5px;
+  color: var(--ink-muted);
+  margin-bottom: 8px;
+}
+
+.students-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.student-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all .12s;
+  text-align: right;
+  width: 100%;
+  font-family: inherit;
+}
+.student-row:hover {
+  border-color: var(--moe-purple);
+  background: #FAFAFC;
+}
+.student-row .num {
+  background: var(--moe-purple-light);
+  color: var(--moe-purple);
+  min-width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid; place-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.student-row .info { flex: 1; min-width: 0; }
+.student-row .name {
+  font-weight: 500;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.student-row .sub {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--ink-muted);
+}
+.empty-state .big-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+.empty-state p { font-size: 14px; }
+
+/* ===== بطاقة الطالب ===== */
+.student-header {
+  background: linear-gradient(135deg, var(--moe-purple) 0%, #5E2FBE 100%);
+  color: white;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-lg);
+}
+.student-header .name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.student-header .meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.student-header .pill {
+  background: rgba(255,255,255,.18);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12.5px;
+}
+
+.info-grid {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px dashed var(--border-soft);
+  font-size: 13.5px;
+}
+.info-row:last-child { border-bottom: none; }
+.info-row .label { color: var(--ink-muted); }
+.info-row .value { color: var(--ink); font-weight: 500; }
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.action-btn {
+  padding: 10px 6px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .12s;
+  text-align: center;
+}
+.action-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.action-btn .emoji { font-size: 20px; display: block; margin-bottom: 3px; }
+.action-btn .text { font-size: 11px; display: block; font-weight: 500; }
+.action-btn.note      { border-color: #3B82F6; color: #1D4ED8; }
+.action-btn.violation { border-color: #DC2626; color: #991B1B; }
+.action-btn.achievement { border-color: #16A34A; color: #15803D; }
+.action-btn.alert     { border-color: #D97706; color: #92400E; }
+.action-btn.warning   { border-color: #BE185D; color: #9F1239; }
+
+.student-points {
+  background: var(--moe-teal-light);
+  color: var(--moe-teal-dark);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+
+.log-list { display: flex; flex-direction: column; gap: 8px; }
+.log-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  border-right: 3px solid var(--border);
+}
+.log-item.type-note       { border-right-color: #3B82F6; }
+.log-item.type-violation  { border-right-color: #DC2626; }
+.log-item.type-achievement{ border-right-color: #16A34A; }
+.log-item.type-alert      { border-right-color: #D97706; }
+.log-item.type-warning    { border-right-color: #BE185D; }
+.log-item .log-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+.log-item .log-type {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 11px;
+}
+.log-item.type-note       .log-type { background: #DBEAFE; color: #1D4ED8; }
+.log-item.type-violation  .log-type { background: #FEE2E2; color: #991B1B; }
+.log-item.type-achievement .log-type{ background: #DCFCE7; color: #15803D; }
+.log-item.type-alert      .log-type { background: #FEF3C7; color: #92400E; }
+.log-item.type-warning    .log-type { background: #FCE7F3; color: #9F1239; }
+.log-item .log-time { color: var(--ink-muted); }
+.log-item .log-desc { font-size: 13.5px; line-height: 1.6; margin: 4px 0; }
+.log-item .log-foot {
+  font-size: 11.5px;
+  color: var(--ink-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+/* ===== Modal ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,41,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+.modal-backdrop.visible {
+  display: flex;
+  animation: fadeIn .2s ease;
+}
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 22px 20px;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp .25s ease;
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.modal h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.modal-actions .btn { flex: 1; }
+
+@media (min-width: 768px) {
+  .modal-backdrop { align-items: center; padding: 20px; }
+  .modal { border-radius: var(--radius-lg); }
+}
+
 @media (min-width: 768px) {
   .app-main { padding-top: 40px; }
   .modules-grid { grid-template-columns: repeat(3, 1fr); }
@@ -508,9 +901,101 @@ body {
     <div class="perms-list" id="permsList"></div>
   </section>
 
+  <!-- شاشة الاستيراد -->
+  <section class="screen" id="import-screen">
+    <div class="screen-header">
+      <button class="back-btn" onclick="backToDashboard()" aria-label="رجوع">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <h2>استيراد البيانات</h2>
+    </div>
+
+    <div class="import-intro">
+      📌 ابدأ باستيراد <strong>الصفوف والفصول</strong> أولاً، ثم <strong>الطلاب</strong>. كل طالب يُربط بفصل موجود مسبقاً.
+    </div>
+
+    <div class="import-section">
+      <h3><span class="step-num">1</span> الصفوف والفصول</h3>
+      <p>حمّل القالب، عبّئ الصفوف والفصول الخاصة بمدرستك، ثم ارفعه.</p>
+      <div class="import-actions">
+        <button class="btn btn-outline" onclick="downloadTemplate('grades')">⬇️ تحميل القالب</button>
+        <button class="btn btn-primary" onclick="document.getElementById('gradesFileInput').click()">⬆️ رفع الملف</button>
+        <input type="file" id="gradesFileInput" accept=".xlsx,.xls" onchange="handleGradesUpload(event)">
+      </div>
+      <div class="import-result" id="gradesResult"></div>
+    </div>
+
+    <div class="import-section">
+      <h3><span class="step-num">2</span> الطلاب</h3>
+      <p>حمّل قالب الطلاب، عبّئه، ثم ارفعه. لا تستورد الطلاب قبل الصفوف.</p>
+      <div class="import-actions">
+        <button class="btn btn-outline" onclick="downloadTemplate('students')">⬇️ تحميل القالب</button>
+        <button class="btn btn-primary" onclick="document.getElementById('studentsFileInput').click()">⬆️ رفع الملف</button>
+        <input type="file" id="studentsFileInput" accept=".xlsx,.xls" onchange="handleStudentsUpload(event)">
+      </div>
+      <div class="import-result" id="studentsResult"></div>
+    </div>
+  </section>
+
+  <!-- شاشة الطلاب -->
+  <section class="screen" id="students-screen">
+    <div class="screen-header">
+      <button class="back-btn" onclick="backToDashboard()" aria-label="رجوع">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <h2>متابعة الطلاب</h2>
+    </div>
+
+    <div class="search-bar">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="search" id="studentSearch" placeholder="ابحث بالاسم أو رقم الهوية..." oninput="onStudentSearch()">
+    </div>
+
+    <div class="filter-chips" id="classFilters"></div>
+    <div class="students-meta" id="studentsMeta"></div>
+    <div class="students-list" id="studentsList"></div>
+  </section>
+
+  <!-- شاشة بطاقة الطالب -->
+  <section class="screen" id="student-detail-screen">
+    <div class="screen-header">
+      <button class="back-btn" onclick="backToStudents()" aria-label="رجوع">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <h2>بطاقة الطالب</h2>
+    </div>
+    <div id="studentDetailBody"></div>
+  </section>
+
+
 </main>
 
 <div id="toast"></div>
+
+<!-- Modal لإضافة ملاحظة -->
+<div class="modal-backdrop" id="logModal" onclick="if(event.target===this)closeLogModal()">
+  <div class="modal">
+    <h3 id="logModalTitle">إضافة ملاحظة</h3>
+    <div class="field">
+      <label for="logCategory">الفئة (اختياري)</label>
+      <input type="text" id="logCategory" placeholder="مثل: غياب، سلوك، مشاركة...">
+    </div>
+    <div class="field">
+      <label for="logDescription">الوصف <span style="color:var(--danger)">*</span></label>
+      <textarea id="logDescription" rows="4" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:14px;resize:vertical;" placeholder="اكتب تفاصيل الملاحظة..."></textarea>
+    </div>
+    <div class="field">
+      <label for="logPoints">النقاط (اختياري)</label>
+      <input type="number" id="logPoints" placeholder="سيتم وضع قيمة افتراضية إذا تركت فارغة">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeLogModal()">إلغاء</button>
+      <button class="btn btn-primary" id="logSubmitBtn" onclick="submitLog()">حفظ</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
 
 <footer class="app-footer">
   بوابة المدرسة · الإصدار 1.0
@@ -521,7 +1006,7 @@ body {
 // الإعدادات
 // ============================================================
 const CONFIG = {
-  API_URL: 'https://script.google.com/macros/s/AKfycbzEwR-LJONyy5da_SJxYTOtpuv7EULUKoBeDqwYL8KVni8eRHnifxqzPME_mEIxVTNhdQ/exec',
+  API_URL: 'https://script.google.com/macros/s/AKfycbz3BKNv7gO_VmELuqlcKsLNeh2wSeuIxFmFjhv7VLikrb3zgFF1lJBN88Mc-j5s_407Sg/exec',
   STORAGE_KEY: 'school_portal_token_v1',
 };
 
@@ -682,6 +1167,8 @@ function renderDashboard() {
     `;
     tile.onclick = () => {
       if (!has) return showToast('لا تملك صلاحية لهذه الوحدة');
+      if (m.id === 'students') return openStudentsScreen();
+      if (m.id === 'import')   return openImportScreen();
       showToast(m.label + ' — قيد التطوير');
     };
     grid.appendChild(tile);
@@ -716,6 +1203,518 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
   }[c]));
+}
+
+// ============================================================
+// التنقل المساعد
+// ============================================================
+function backToDashboard() { renderDashboard(); showScreen('dashboard-screen'); }
+function backToStudents()  { showScreen('students-screen'); }
+
+// ============================================================
+// شاشة الاستيراد
+// ============================================================
+
+function openImportScreen() {
+  document.getElementById('gradesResult').className = 'import-result';
+  document.getElementById('studentsResult').className = 'import-result';
+  showScreen('import-screen');
+}
+
+const TEMPLATES = {
+  grades: {
+    filename: 'قالب_الصفوف_والفصول.xlsx',
+    sheetName: 'الصفوف والفصول',
+    headers: [
+      'grade_name | اسم المرحلة',
+      'grade_level | المستوى (رقم)',
+      'department | القسم',
+      'sections | أرقام الفصول'
+    ],
+    note: 'قالب الصفوف والفصول — اتبع التعليمات:\n• املأ صفاً لكل مرحلة\n• في "أرقام الفصول" اكتب الأرقام مفصولة بفاصلة، مثلاً: 1,2,3,4\n• احذف صف المثال قبل الرفع',
+    examples: [
+      ['مثال: الأول الثانوي', 1, 'السنة المشتركة', '1,2,3,4,5,6'],
+      ['مثال: الثاني الثانوي', 2, 'المسار العام', '1,2,3,4,5,6'],
+    ],
+    colWidths: [28, 18, 22, 28],
+  },
+  students: {
+    filename: 'قالب_الطلاب.xlsx',
+    sheetName: 'الطلاب',
+    headers: [
+      'national_id | رقم الهوية',
+      'full_name | الاسم الرباعي',
+      'grade_name | المرحلة',
+      'section_number | رقم الفصل',
+      'serial_in_class | الترتيب',
+      'birth_date | تاريخ الميلاد',
+      'nationality | الجنسية',
+      'status | حالة القيد',
+      'guardian_name | ولي الأمر',
+      'guardian_phone | جوال ولي الأمر'
+    ],
+    note: 'قالب الطلاب:\n• "المرحلة" يجب أن تطابق اسم المرحلة في قالب الصفوف\n• "رقم الفصل" رقم فقط (1، 2، 3، ...)\n• الهوية ضرورية — لا يُقبل طالب بدون رقم هوية',
+    examples: [
+      ['1024380832', 'مثال: بسام بن مبارك العجمي', 'الأول الثانوي', 1, 1, '06/06/1431', 'السعودية', 'مستمر في الدراسة', 'مبارك بن فهد العجمي', '0567653887'],
+    ],
+    colWidths: [16, 32, 22, 14, 14, 16, 14, 20, 26, 18],
+  },
+};
+
+function downloadTemplate(type) {
+  const t = TEMPLATES[type];
+  if (!t) return;
+  const wb = XLSX.utils.book_new();
+  const aoa = [
+    [t.note],
+    t.headers,
+    ...t.examples,
+  ];
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  ws['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: t.headers.length - 1 } }];
+  ws['!cols'] = t.colWidths.map(w => ({ wch: w }));
+  ws['!rows'] = [{ hpt: 60 }, { hpt: 32 }];
+  if (ws['!views']) ws['!views'][0].RTL = true;
+  else ws['!views'] = [{ RTL: true }];
+  XLSX.utils.book_append_sheet(wb, ws, t.sheetName);
+  XLSX.writeFile(wb, t.filename);
+}
+
+function parseUploadedFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const data = new Uint8Array(e.target.result);
+        const wb = XLSX.read(data, { type: 'array' });
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        const aoa = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+        resolve(aoa);
+      } catch (err) { reject(err); }
+    };
+    reader.onerror = () => reject(new Error('فشلت قراءة الملف'));
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+function extractFieldKey(headerCell) {
+  // الرأس يكون بصيغة "field_name | التسمية العربية"
+  const parts = String(headerCell || '').split('|');
+  return parts[0].trim();
+}
+
+async function handleGradesUpload(evt) {
+  const file = evt.target.files[0];
+  if (!file) return;
+  evt.target.value = '';  // سماح بإعادة الرفع لنفس الملف
+
+  const resultDiv = document.getElementById('gradesResult');
+  resultDiv.className = 'import-result';
+  resultDiv.innerHTML = '<span class="spinner" style="border-top-color:var(--moe-purple)"></span> جاري المعالجة...';
+  resultDiv.style.display = 'block';
+
+  try {
+    const aoa = await parseUploadedFile(file);
+    // ابحث عن صف الرؤوس (يبدأ بـ grade_name)
+    let headerIdx = aoa.findIndex(r => r.some(c => String(c).indexOf('grade_name') >= 0));
+    if (headerIdx < 0) throw new Error('لم يتم العثور على صف الرؤوس. تأكد أنك تستخدم القالب الصحيح.');
+
+    const headers = aoa[headerIdx].map(extractFieldKey);
+    const rows = [];
+    for (let i = headerIdx + 1; i < aoa.length; i++) {
+      const row = aoa[i];
+      if (!row || row.every(c => c === '' || c === null || c === undefined)) continue;
+      const obj = {};
+      headers.forEach((h, idx) => { if (h) obj[h] = row[idx]; });
+      if (!obj.grade_name || String(obj.grade_name).indexOf('مثال') === 0) continue;
+      rows.push(obj);
+    }
+
+    if (rows.length === 0) throw new Error('لم يُعثر على أي صفوف صالحة. تذكّر حذف صفوف المثال.');
+
+    const res = await api('importGrades', { token: state.token, payload: JSON.stringify(rows) });
+    resultDiv.className = 'import-result success';
+    resultDiv.innerHTML =
+      `✓ تم الاستيراد بنجاح<br>
+      • مراحل جديدة: <strong>${res.added_grades}</strong><br>
+      • فصول جديدة: <strong>${res.added_classes}</strong><br>
+      ${res.skipped_grades ? `• مراحل موجودة مسبقاً: ${res.skipped_grades}<br>` : ''}
+      ${res.skipped_classes ? `• فصول موجودة مسبقاً: ${res.skipped_classes}` : ''}`;
+  } catch (err) {
+    resultDiv.className = 'import-result error';
+    resultDiv.innerHTML = '❌ ' + err.message;
+  }
+}
+
+async function handleStudentsUpload(evt) {
+  const file = evt.target.files[0];
+  if (!file) return;
+  evt.target.value = '';
+
+  const resultDiv = document.getElementById('studentsResult');
+  resultDiv.className = 'import-result';
+  resultDiv.innerHTML = '<span class="spinner" style="border-top-color:var(--moe-purple)"></span> جاري المعالجة...';
+  resultDiv.style.display = 'block';
+
+  try {
+    const aoa = await parseUploadedFile(file);
+    let headerIdx = aoa.findIndex(r => r.some(c => String(c).indexOf('national_id') >= 0));
+    if (headerIdx < 0) throw new Error('لم يتم العثور على صف الرؤوس. تأكد أنك تستخدم القالب الصحيح.');
+
+    const headers = aoa[headerIdx].map(extractFieldKey);
+    const rows = [];
+    for (let i = headerIdx + 1; i < aoa.length; i++) {
+      const row = aoa[i];
+      if (!row || row.every(c => c === '' || c === null || c === undefined)) continue;
+      const obj = {};
+      headers.forEach((h, idx) => { if (h) obj[h] = row[idx]; });
+      if (!obj.national_id || String(obj.full_name).indexOf('مثال') === 0) continue;
+      rows.push(obj);
+    }
+
+    if (rows.length === 0) throw new Error('لم يُعثر على طلاب صالحين.');
+
+    resultDiv.innerHTML = `<span class="spinner" style="border-top-color:var(--moe-purple)"></span> جاري رفع ${rows.length} طالب...`;
+
+    const res = await api('importStudents', { token: state.token, payload: JSON.stringify(rows) });
+    resultDiv.className = 'import-result success';
+    let html =
+      `✓ تمّت المعالجة<br>
+      • طلاب جدد: <strong>${res.added}</strong><br>
+      • طلاب تم تحديثهم: <strong>${res.updated}</strong><br>
+      ${res.errors ? `• أخطاء: <strong>${res.errors}</strong>` : ''}`;
+    if (res.error_list && res.error_list.length) {
+      html += '<ul>';
+      res.error_list.forEach(e => {
+        html += `<li>صف ${e.row}${e.student ? ' (' + e.student + ')' : ''}: ${e.reason}</li>`;
+      });
+      html += '</ul>';
+    }
+    resultDiv.innerHTML = html;
+  } catch (err) {
+    resultDiv.className = 'import-result error';
+    resultDiv.innerHTML = '❌ ' + err.message;
+  }
+}
+
+// ============================================================
+// شاشة الطلاب
+// ============================================================
+
+const studentsState = {
+  classes: [],
+  grades: [],
+  classesByGrade: {},
+  activeGrade: null,
+  activeClass: null,
+  searchQuery: '',
+  loaded: false,
+};
+
+async function openStudentsScreen() {
+  showScreen('students-screen');
+  if (!studentsState.loaded) {
+    await loadClassesForFilters();
+  }
+  loadStudents();
+}
+
+async function loadClassesForFilters() {
+  try {
+    const grades = await api('listGrades', { token: state.token });
+    const classes = await api('listClasses', { token: state.token });
+    studentsState.grades = grades;
+    studentsState.classes = classes;
+    renderFilterChips();
+    studentsState.loaded = true;
+  } catch (err) {
+    showToast(err.message);
+  }
+}
+
+function renderFilterChips() {
+  const bar = document.getElementById('classFilters');
+  bar.innerHTML = '';
+
+  // "الكل"
+  const allChip = document.createElement('button');
+  allChip.className = 'filter-chip' + (!studentsState.activeGrade && !studentsState.activeClass ? ' active' : '');
+  allChip.textContent = 'الكل';
+  allChip.onclick = () => {
+    studentsState.activeGrade = null;
+    studentsState.activeClass = null;
+    renderFilterChips();
+    loadStudents();
+  };
+  bar.appendChild(allChip);
+
+  // اعرض المراحل أولاً
+  studentsState.grades.forEach(g => {
+    const chip = document.createElement('button');
+    chip.className = 'filter-chip' + (studentsState.activeGrade === g.grade_id && !studentsState.activeClass ? ' active' : '');
+    chip.textContent = g.grade_name;
+    chip.onclick = () => {
+      studentsState.activeGrade = g.grade_id;
+      studentsState.activeClass = null;
+      renderFilterChips();
+      loadStudents();
+    };
+    bar.appendChild(chip);
+  });
+
+  // إذا اختيرت مرحلة، اعرض فصولها
+  if (studentsState.activeGrade) {
+    const sections = studentsState.classes.filter(c => c.grade_id === studentsState.activeGrade);
+    sections.forEach(c => {
+      const chip = document.createElement('button');
+      chip.className = 'filter-chip' + (studentsState.activeClass === c.class_id ? ' active' : '');
+      chip.textContent = 'فصل ' + c.section_number;
+      chip.onclick = () => {
+        studentsState.activeClass = c.class_id;
+        renderFilterChips();
+        loadStudents();
+      };
+      bar.appendChild(chip);
+    });
+  }
+}
+
+async function loadStudents() {
+  const list = document.getElementById('studentsList');
+  const meta = document.getElementById('studentsMeta');
+  list.innerHTML = '<div style="text-align:center;padding:20px;color:var(--ink-muted)"><span class="spinner" style="border-top-color:var(--moe-purple)"></span> جاري التحميل...</div>';
+  meta.textContent = '';
+
+  try {
+    const params = { token: state.token };
+    if (studentsState.activeClass) params.class_id = studentsState.activeClass;
+    else if (studentsState.activeGrade) params.grade_id = studentsState.activeGrade;
+    if (studentsState.searchQuery) params.q = studentsState.searchQuery;
+
+    const res = await api('listStudents', params);
+    renderStudentsList(res.students, res.total);
+  } catch (err) {
+    list.innerHTML = '<div class="empty-state"><p>❌ ' + err.message + '</p></div>';
+  }
+}
+
+function renderStudentsList(students, total) {
+  const list = document.getElementById('studentsList');
+  const meta = document.getElementById('studentsMeta');
+
+  if (!students || students.length === 0) {
+    list.innerHTML = '<div class="empty-state"><div class="big-icon">👥</div><p>لا يوجد طلاب</p></div>';
+    meta.textContent = '';
+    return;
+  }
+
+  meta.textContent = total > students.length
+    ? `عرض ${students.length} من أصل ${total} طالب`
+    : `العدد: ${students.length}`;
+
+  const classesMap = {};
+  studentsState.classes.forEach(c => { classesMap[c.class_id] = c; });
+
+  list.innerHTML = '';
+  students.forEach(s => {
+    const row = document.createElement('button');
+    row.className = 'student-row';
+    const cls = classesMap[s.class_id];
+    const className = cls ? cls.class_name : '—';
+    row.innerHTML = `
+      <div class="num">${s.serial_in_class || '—'}</div>
+      <div class="info">
+        <div class="name">${escapeHtml(s.full_name)}</div>
+        <div class="sub">${className} · ${escapeHtml(s.national_id)}</div>
+      </div>
+    `;
+    row.onclick = () => openStudentDetail(s.student_id);
+    list.appendChild(row);
+  });
+}
+
+let searchTimer = null;
+function onStudentSearch() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    studentsState.searchQuery = document.getElementById('studentSearch').value.trim();
+    loadStudents();
+  }, 300);
+}
+
+// ============================================================
+// بطاقة الطالب
+// ============================================================
+
+let currentStudent = null;
+
+async function openStudentDetail(studentId) {
+  showScreen('student-detail-screen');
+  const body = document.getElementById('studentDetailBody');
+  body.innerHTML = '<div style="text-align:center;padding:40px;color:var(--ink-muted)"><span class="spinner" style="border-top-color:var(--moe-purple)"></span> جاري التحميل...</div>';
+
+  try {
+    const [detail, logData] = await Promise.all([
+      api('getStudent', { token: state.token, student_id: studentId }),
+      api('listStudentLog', { token: state.token, student_id: studentId }),
+    ]);
+    currentStudent = detail.student;
+    renderStudentDetail(detail, logData);
+  } catch (err) {
+    body.innerHTML = '<div class="empty-state"><p>❌ ' + err.message + '</p></div>';
+  }
+}
+
+function renderStudentDetail(detail, logData) {
+  const s = detail.student;
+  const cls = detail.class;
+  const grade = detail.grade;
+  const logs = logData.logs || [];
+  const points = logData.total_points || 0;
+
+  const canAddNote = state.context.permissions.includes('students.add_note');
+  const canAddViolation = state.context.permissions.includes('students.add_violation');
+
+  const actions = canAddNote ? `
+    <div class="action-buttons">
+      <button class="action-btn note" onclick="openLogModal('note')"><span class="emoji">📝</span><span class="text">ملاحظة</span></button>
+      ${canAddViolation ? '<button class="action-btn violation" onclick="openLogModal(\'violation\')"><span class="emoji">⚠️</span><span class="text">مخالفة</span></button>' : ''}
+      <button class="action-btn achievement" onclick="openLogModal('achievement')"><span class="emoji">⭐</span><span class="text">إنجاز</span></button>
+      <button class="action-btn alert" onclick="openLogModal('alert')"><span class="emoji">🔔</span><span class="text">تنبيه</span></button>
+      ${canAddViolation ? '<button class="action-btn warning" onclick="openLogModal(\'warning\')"><span class="emoji">🚨</span><span class="text">إنذار</span></button>' : ''}
+    </div>
+  ` : '';
+
+  const pointsColor = points >= 0 ? 'var(--moe-teal-dark)' : 'var(--danger)';
+  const pointsBg = points >= 0 ? 'var(--moe-teal-light)' : 'var(--danger-bg)';
+
+  let logsHtml = '';
+  if (logs.length === 0) {
+    logsHtml = '<div class="empty-state" style="padding:30px 20px"><div class="big-icon">📋</div><p>لا يوجد سجل بعد</p></div>';
+  } else {
+    logsHtml = '<div class="log-list">';
+    logs.forEach(l => {
+      const pts = Number(l.points) || 0;
+      const ptsStr = pts > 0 ? '+' + pts : pts;
+      const date = formatDate(l.created_at);
+      logsHtml += `
+        <div class="log-item type-${l.log_type}">
+          <div class="log-head">
+            <span class="log-type">${l.log_type_ar}${l.category ? ' · ' + escapeHtml(l.category) : ''}</span>
+            <span class="log-time">${date}</span>
+          </div>
+          <div class="log-desc">${escapeHtml(l.description)}</div>
+          <div class="log-foot">
+            <span>بواسطة: ${escapeHtml(l.created_by_name)}</span>
+            ${pts !== 0 ? `<span style="font-weight:600;color:${pts > 0 ? 'var(--moe-teal-dark)' : 'var(--danger)'}">${ptsStr} نقطة</span>` : ''}
+          </div>
+        </div>
+      `;
+    });
+    logsHtml += '</div>';
+  }
+
+  document.getElementById('studentDetailBody').innerHTML = `
+    <div class="student-header">
+      <div class="name">${escapeHtml(s.full_name)}</div>
+      <div class="meta">
+        <span class="pill">${cls ? escapeHtml(cls.class_name) : '—'}</span>
+        <span class="pill">رقم ${s.serial_in_class || '—'}</span>
+        ${s.status ? `<span class="pill">${escapeHtml(s.status)}</span>` : ''}
+      </div>
+    </div>
+
+    <div class="student-points" style="background:${pointsBg};color:${pointsColor}">
+      <span>مجموع النقاط</span>
+      <span style="font-size:17px;font-weight:700">${points > 0 ? '+' : ''}${points}</span>
+    </div>
+
+    ${actions}
+
+    <div class="section-label">المعلومات الأساسية</div>
+    <div class="info-grid">
+      <div class="info-row"><span class="label">رقم الهوية</span><span class="value">${escapeHtml(s.national_id)}</span></div>
+      ${s.birth_date ? `<div class="info-row"><span class="label">تاريخ الميلاد</span><span class="value">${escapeHtml(s.birth_date)}</span></div>` : ''}
+      ${s.nationality ? `<div class="info-row"><span class="label">الجنسية</span><span class="value">${escapeHtml(s.nationality)}</span></div>` : ''}
+      ${s.guardian_name ? `<div class="info-row"><span class="label">ولي الأمر</span><span class="value">${escapeHtml(s.guardian_name)}</span></div>` : ''}
+      ${s.guardian_phone ? `<div class="info-row"><span class="label">جوال ولي الأمر</span><span class="value" style="direction:ltr">${escapeHtml(s.guardian_phone)}</span></div>` : ''}
+      ${s.student_phone ? `<div class="info-row"><span class="label">جوال الطالب</span><span class="value" style="direction:ltr">${escapeHtml(s.student_phone)}</span></div>` : ''}
+    </div>
+
+    <div class="section-label">السجل</div>
+    ${logsHtml}
+  `;
+}
+
+function formatDate(d) {
+  if (!d) return '—';
+  try {
+    const date = new Date(d);
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hh = String(date.getHours()).padStart(2, '0');
+    const mm = String(date.getMinutes()).padStart(2, '0');
+    return `${y}-${m}-${day} ${hh}:${mm}`;
+  } catch { return String(d); }
+}
+
+// ============================================================
+// إضافة ملاحظة/مخالفة/إنجاز
+// ============================================================
+
+let currentLogType = 'note';
+const LOG_TYPE_AR = {
+  note: 'ملاحظة',
+  violation: 'مخالفة',
+  achievement: 'إنجاز',
+  alert: 'تنبيه',
+  warning: 'إنذار',
+};
+
+function openLogModal(logType) {
+  currentLogType = logType;
+  document.getElementById('logModalTitle').textContent = 'إضافة ' + LOG_TYPE_AR[logType];
+  document.getElementById('logCategory').value = '';
+  document.getElementById('logDescription').value = '';
+  document.getElementById('logPoints').value = '';
+  document.getElementById('logModal').classList.add('visible');
+  setTimeout(() => document.getElementById('logDescription').focus(), 100);
+}
+
+function closeLogModal() {
+  document.getElementById('logModal').classList.remove('visible');
+}
+
+async function submitLog() {
+  const desc = document.getElementById('logDescription').value.trim();
+  if (!desc || desc.length < 3) {
+    return showToast('الوصف مطلوب (3 أحرف على الأقل)');
+  }
+  const btn = document.getElementById('logSubmitBtn');
+  const orig = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> جاري الحفظ...';
+
+  try {
+    await api('addStudentLog', {
+      token: state.token,
+      student_id: currentStudent.student_id,
+      log_type: currentLogType,
+      category: document.getElementById('logCategory').value.trim(),
+      description: desc,
+      points: document.getElementById('logPoints').value,
+    });
+    showToast('تم الحفظ');
+    closeLogModal();
+    // أعد تحميل البطاقة
+    openStudentDetail(currentStudent.student_id);
+  } catch (err) {
+    showToast(err.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = orig;
+  }
 }
 
 // ============================================================
